@@ -10,15 +10,16 @@
   <div>
       <ion-list>
         <ion-item>
-          <ion-input type="url" [(ngModel)]="data.url" placeholder="Please Insert URL"></ion-input>
+          <ion-input type="url" [(ngModel)]="data.url" placeholder="Please Insert URL" [disabled]="ro"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Redirect</ion-label>
-          <ion-checkbox [(ngModel)]="data.isRedirect"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="data.isRedirect" [disabled]="ro"></ion-checkbox>
         </ion-item>
       </ion-list>
-      <button ion-button (click)="submit()">Submit</button>
+      <button ion-button (click)="submit()" [disabled]="ro">Submit</button>
+      <button ion-button (click)="disconnect()" [disabled]="!ro">Disconnect</button>
     <h3>{{ errorMessage }}</h3>
-    <h3 *ngIf="data.isRedirect">URL: {{ data.url }}</h3>
+    <h3 *ngIf="ro">URL: {{ data.url }}</h3>
   </div>
 </ion-content>
